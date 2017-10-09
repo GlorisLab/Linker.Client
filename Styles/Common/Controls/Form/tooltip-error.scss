@@ -1,0 +1,32 @@
+#tooltip-error {
+  height: auto;
+  max-width: initial;
+  margin-top: 24px;
+  margin-left: 0;
+  background-color: $red-400;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  font-size: 12px;
+  line-height: 12px;
+  color: $white;
+  transform: translate(-100%, 50%);
+
+  .popover-content {
+    padding: 7px 8px;
+    white-space: nowrap;
+  }
+
+  .arrow {
+    left: auto;
+    right: 40px;
+    margin-top: -23px;
+    border: none;
+
+    &::after {
+      margin-left: 0;
+      border: 6px solid transparent;
+      border-bottom-color: $red-400;
+    }
+  }
+}

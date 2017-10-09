@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient($blue-50, $white);
+  color: $gray-700;
+  font-size: 14px;
+  margin: 0;
+  font-family: Arial;
+}
+
+.hidden {
+  display: none !important;
+}

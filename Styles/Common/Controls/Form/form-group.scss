@@ -1,0 +1,25 @@
+.form-group {
+  position: relative;
+  margin-bottom: 16px;
+
+  .material-icons {
+    @extend %vertical-center;
+  }
+}
+
+.has-error {
+  .form-control,
+  .searcher .rw-widget,
+  .multi-select .rw-widget,
+  .select .rw-dropdownlist {
+    border-color: $red-400 !important;
+  }
+}
+
+.inline {
+  .wrap-field {
+    display: inline-block;
+    margin-left: 32px;
+    width: calc(100% - 32px);
+  }
+}
