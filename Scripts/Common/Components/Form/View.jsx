@@ -4,41 +4,21 @@ import { OverlayStatus, ValidationAlert } from 'Components/Helpers';
 import { STATUS_LOADING, STATUS_DEFAULT } from 'Constants/StatusConstants';
 
 class BaseFormContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      lastEditing: null,
-      lastEditingStatus: STATUS_LOADING
-    };
-
-    const { handleSubmit, onSubmit } = props;
-
-    this.onSubmit = () => {
-      const submitCallback =
-        (this.props.status && this.props.status !== STATUS_DEFAULT) || !onSubmit || !handleSubmit ? () => ({}) : onSubmit;
-
-      return handleSubmit(submitCallback);
-    };
-  }
-
   render() {
-    const { status, message, children, errors, className } = this.props;
+    const { handleSubmit, onSubmit, children, errors, className } = this.props;
 
     return (
-      <OverlayStatus status={status} message={message}>
+      <div>
         <ValidationAlert errors={errors} />
-        <form onSubmit={this.onSubmit()} className={className}>
+        <form onSubmit={onSubmit && handleSubmit ? handleSubmit(onSubmit) : null} className={className}>
           {children}
         </form>
-      </OverlayStatus>
+      </div>
     );
   }
 }
 
 BaseFormContainer.propTypes = {
-  status: PropTypes.string,
-  message: PropTypes.string,
   className: PropTypes.string,
   errors: PropTypes.oneOfType([
     PropTypes.object,

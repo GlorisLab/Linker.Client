@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/lib/Button';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
+import ButtonLoader from './ButtonLoader';
 
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 
@@ -41,6 +42,7 @@ import PopoverSelect from './PopoverSelect';
 export {
   Button,
   DropdownButton,
+  ButtonLoader,
 
   MenuItem,
 

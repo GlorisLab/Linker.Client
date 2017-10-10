@@ -1,34 +1,58 @@
 .authorization-form {
-  padding: 32px 16px 22px;
+  padding: 0 16px 22px;
   overflow: hidden;
 
   .buttons-group {
     margin-top: 32px;
   }
+}
 
-  &.example-enter.example-enter-active {
-    max-height: 500px;
-    padding: 32px 16px 22px;
+.registration-form {
+  &.authorization-enter.authorization-enter-active {
+    height: 286px;
     opacity: 1;
-    transition: all 500ms ease-in;
+    transition: all 500ms linear 200ms;
   }
 
-  &.example-enter {
-    max-height: 0;
-    padding: 0;
+  &.authorization-enter {
+    height: 222px;
     opacity: 0;
   }
 
-  &.example-leave {
-    padding: 32px 16px 22px;
-    max-height: 500px;
+  &.authorization-leave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     opacity: 1;
   }
 
-  &.example-leave.example-leave-active {
-    max-height: 0;
-    padding: 0;
+  &.authorization-leave.authorization-leave-active {
     opacity: 0;
-    transition: all 500ms ease-in;
+    transition: all 500ms linear;
+  }
+}
+
+.sign-in-form {
+  &.authorization-enter.authorization-enter-active {
+    height: 222px;
+    opacity: 1;
+    transition: all 500ms linear 200ms;
+  }
+
+  &.authorization-enter {
+    height: 286px;
+    opacity: 0;
+  }
+
+  &.authorization-leave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+  }
+
+  &.authorization-leave.authorization-leave-active {
+    opacity: 0;
+    transition: all 500ms linear;
   }
 }

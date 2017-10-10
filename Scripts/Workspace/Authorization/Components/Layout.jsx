@@ -27,13 +27,13 @@ class AuthorizationLayout extends Component {
           <Button bsStyle="primary" className="toggled-view" onClick={this.onToggleView}>
             {
               isSignIn ?
-                <div><i className="material-icons">person_add</i><span>Registration</span></div> :
-                <div><i className="material-icons">person</i><span>Sign in</span></div>
+                [<i className="material-icons">person_add</i>, <span>Registration</span>] :
+                [<i className="material-icons">person</i>, <span>Sign in</span>]
             }
           </Button>
           <ReactCSSTransitionGroup
-            transitionName="example"
-            transitionEnterTimeout={500}
+            transitionName="authorization"
+            transitionEnterTimeout={700}
             transitionLeaveTimeout={500}
           >
             {isSignIn && <SignIn />}
