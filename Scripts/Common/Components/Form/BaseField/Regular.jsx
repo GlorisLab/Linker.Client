@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormGroup, ControlLabel } from 'Components/Controls';
 
-const BaseFieldRegular = ({ inline, hidden, required, validationState, label, asyncValidating, children, className, icon }) => (
+const BaseFieldRegular = ({ inline, hidden, required, validationState, value, label, asyncValidating, children, className, icon }) => (
   <FormGroup
     validationState={validationState}
-    className={classNames(className, { inline: inline || icon, hidden, 'has-loading': asyncValidating })}
+    className={classNames(className, { inline: inline || icon, hidden, 'has-loading': asyncValidating, 'has-not-empty': value })}
   >
-    {label && <ControlLabel className={classNames({ required })}>{label}</ControlLabel>}
     {icon && <i className="material-icons">{icon}</i>}
-    <div className="wrap-field">
-      {children}
-    </div>
+    {children}
+    {label && <ControlLabel className={classNames({ required })}>{label}</ControlLabel>}
   </FormGroup>
 );
 
@@ -25,6 +23,13 @@ BaseFieldRegular.propTypes = {
   validationState: PropTypes.string,
   icon: PropTypes.string,
   className: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.namber,
+    PropTypes.boll,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.array

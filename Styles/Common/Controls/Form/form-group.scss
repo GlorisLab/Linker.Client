@@ -1,6 +1,7 @@
 .form-group {
   position: relative;
   margin-bottom: 16px;
+  margin-top: 30px;
 
   .material-icons {
     @extend %vertical-center;
@@ -12,12 +13,15 @@
   .searcher .rw-widget,
   .multi-select .rw-widget,
   .select .rw-dropdownlist {
-    border-color: $red-400 !important;
+    border-color: $pink-500 !important;
   }
 }
 
 .inline {
-  .wrap-field {
+  .form-control,
+  .searcher .rw-widget,
+  .multi-select .rw-widget,
+  .select .rw-dropdownlist {
     display: inline-block;
     margin-left: 32px;
     width: calc(100% - 32px);

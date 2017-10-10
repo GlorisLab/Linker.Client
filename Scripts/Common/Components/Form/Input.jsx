@@ -11,7 +11,6 @@ const FormInput = ({ name, label, placeholder, normalize, maxLength, ...props })
     props={{
       ...props,
       label,
-      placeholder: FormUtils.definePlaceholderField(label, placeholder)
     }}
     component={Input}
   />

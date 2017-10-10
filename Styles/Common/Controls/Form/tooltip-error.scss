@@ -1,23 +1,25 @@
 #tooltip-error {
   height: auto;
   max-width: initial;
-  margin-top: 24px;
+  margin-top: 20px;
   margin-left: 0;
-  background-color: $red-400;
-  border-radius: 0;
+  background-color: $pink-500;
+  border-radius: 4px;
   border: none;
   box-shadow: none;
   font-size: 12px;
   line-height: 12px;
   color: $white;
+  opacity: 0.9;
   transform: translate(-100%, 50%);
 
   .popover-content {
-    padding: 7px 8px;
+    padding: 8px;
     white-space: nowrap;
   }
 
   .arrow {
+    display: none;
     left: auto;
     right: 40px;
     margin-top: -23px;
@@ -26,7 +28,7 @@
     &::after {
       margin-left: 0;
       border: 6px solid transparent;
-      border-bottom-color: $red-400;
+      border-bottom-color: $pink-500;
     }
   }
 }

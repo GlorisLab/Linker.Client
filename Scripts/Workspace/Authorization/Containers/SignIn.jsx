@@ -15,7 +15,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="sign-in-form">
+      <div className="authorization-form">
         <SigInForm
           {...this.props}
           onSubmit={this.signIn}

@@ -14,7 +14,7 @@ $xs-btn-size: 24px;
   margin-bottom: 0;
   padding: 0 20px;
   border: 1px solid transparent;
-  border-radius: $border-radius;
+  border-radius: 26px;
   background-image: none;
   text-align: center;
   vertical-align: middle;
@@ -34,7 +34,7 @@ $xs-btn-size: 24px;
 }
 
 .btn-primary {
-  @include button-colors($white, $blue-50, lighten($blue-50, 15%), darken($blue-50, 5%));
+  @include button-colors($white, $pink-500, lighten($pink-500, 10%), darken($pink-500, 15%));
 }
 
 a.btn {

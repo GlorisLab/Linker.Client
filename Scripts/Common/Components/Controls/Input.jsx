@@ -4,7 +4,16 @@ import { FormControl } from 'Components/Controls';
 import BaseField from '../Form/BaseField';
 
 const FormInput = ({ input, inline, meta, errorsDisplayType, label, className, required, icon, ...others }) => (
-  <BaseField errorsDisplayType={errorsDisplayType} inline={inline} meta={meta} label={label} className={className} icon={icon} required={required}>
+  <BaseField
+    errorsDisplayType={errorsDisplayType}
+    inline={inline}
+    meta={meta}
+    label={label}
+    className={className}
+    icon={icon}
+    required={required}
+    value={input.value}
+  >
     <FormControl {...input} {...others} />
   </BaseField>
 );
