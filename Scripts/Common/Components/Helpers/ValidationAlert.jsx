@@ -7,11 +7,11 @@ const ValidationAlert = ({ errors, className }) => {
   if (_.isEmpty(errors)) return <span />;
 
   const unwrapErrors = _.isString(errors) ? [errors] : errors;
-
+  console.log('asffasfas');
   return (
-    <div className={classNames('alert-validation-errors', className)}>
-      {unwrapErrors.map((value, key) => <p key={key}>{value}</p>)}
-    </div>
+      <div className={classNames('alert-validation-errors', className)}>
+        {unwrapErrors.map((value, key) => <div key={key}>{value}</div>)}
+      </div>
   );
 };
 

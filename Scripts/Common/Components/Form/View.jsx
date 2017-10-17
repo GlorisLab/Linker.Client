@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { OverlayStatus, ValidationAlert } from 'Components/Helpers';
-import { STATUS_LOADING, STATUS_DEFAULT } from 'Constants/StatusConstants';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { ValidationAlert } from 'Components/Helpers';
 
 class BaseFormContainer extends Component {
   render() {
@@ -9,7 +9,13 @@ class BaseFormContainer extends Component {
 
     return (
       <div>
-        <ValidationAlert errors={errors} />
+        <ReactCSSTransitionGroup
+          transitionName="alert-validation"
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
+        >
+          {errors && <ValidationAlert errors={errors} />}
+        </ReactCSSTransitionGroup>
         <form onSubmit={onSubmit && handleSubmit ? handleSubmit(onSubmit) : null} className={className}>
           {children}
         </form>

@@ -30,36 +30,6 @@
   text-overflow: ellipsis;
 }
 
-%round-arrow-btn {
-  position: relative;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background-color: $gray-200;
-  border-radius: 100%;
-  border: none;
-  line-height: 1;
-  transition: $transition;
-
-  &:hover {
-    background-color: $gray-400;
-  }
-
-  &:disabled {
-    background-color: $gray-200;
-  }
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-
-  .ic {
-    @extend %absolute-center;
-  }
-}
-
 %disabled {
   cursor: $disabled-cursor;
   opacity: $disabled-opacity;
@@ -70,5 +40,24 @@
     content: "";
     display: inline-block;
     height: 100%;
+  }
+}
+
+%wave {
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    -webkit-backface-visibility: hidden;
+    animation: wave-animate 0.7s forwards  ease-out;
   }
 }

@@ -8,8 +8,9 @@ const ControlsButton = ({ className, status, ...others }) => (
   <Button
     className={classNames({
       className,
-      'spinning-loader': status === STATUS_LOADING,
-      'error-status': status === STATUS_ERROR
+      'btn-status-loader': status === STATUS_LOADING,
+      'btn-status-error': status === STATUS_ERROR,
+      'btn-status-success': status === STATUS_SUCCESS
     })}
     {...others}
   />

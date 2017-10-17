@@ -1,6 +1,7 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { Button } from 'Components/Controls';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Button } from 'Components/Controls';
 
 import SignIn from '../Containers/SignIn';
 import Registration from '../Containers/Registration';
@@ -14,7 +15,7 @@ class AuthorizationLayout extends Component {
       isSignIn: true
     };
 
-    this.onToggleView = () => this.setState({ isSignIn: !this.state.isSignIn });
+    this.onToggleView = () => _.debounce(this.setState({ isSignIn: !this.state.isSignIn }), 700);
   }
 
   render() {
@@ -33,8 +34,8 @@ class AuthorizationLayout extends Component {
           </Button>
           <ReactCSSTransitionGroup
             transitionName="authorization"
-            transitionEnterTimeout={700}
-            transitionLeaveTimeout={500}
+            transitionEnterTimeout={400}
+            transitionLeaveTimeout={300}
           >
             {isSignIn && <SignIn />}
             {!isSignIn && <Registration />}

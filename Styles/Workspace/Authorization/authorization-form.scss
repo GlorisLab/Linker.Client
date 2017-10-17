@@ -4,55 +4,39 @@
 
   .buttons-group {
     margin-top: 32px;
-  }
-}
 
-.registration-form {
+    .btn {
+      &.active,
+      &:active,
+      &:active:focus {
+        @extend %wave;
+      }
+    }
+  }
+
   &.authorization-enter.authorization-enter-active {
-    height: 286px;
     opacity: 1;
-    transition: all 500ms linear 200ms;
+    max-height: 400px;
+    padding: 0 16px 22px;
+    transition: all 400ms linear;
   }
 
   &.authorization-enter {
-    height: 222px;
+    max-height: 0;
+    padding: 0;
     opacity: 0;
   }
 
   &.authorization-leave {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    max-height: 400px;
+    padding: 0 16px 22px;
     opacity: 1;
   }
 
   &.authorization-leave.authorization-leave-active {
     opacity: 0;
-    transition: all 500ms linear;
-  }
-}
-
-.sign-in-form {
-  &.authorization-enter.authorization-enter-active {
-    height: 222px;
-    opacity: 1;
-    transition: all 500ms linear 200ms;
-  }
-
-  &.authorization-enter {
-    height: 286px;
-    opacity: 0;
-  }
-
-  &.authorization-leave {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    opacity: 1;
-  }
-
-  &.authorization-leave.authorization-leave-active {
-    opacity: 0;
-    transition: all 500ms linear;
+    padding: 0;
+    max-height: 0;
+    transition: all 300ms linear;
   }
 }

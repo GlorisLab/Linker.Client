@@ -8,6 +8,7 @@ $xs-btn-size: 24px;
 
   @include user-select(none);
 
+  position: relative;
   display: inline-block;
   min-width: 118px;
   height: $md-btn-size;
@@ -34,7 +35,7 @@ $xs-btn-size: 24px;
 }
 
 .btn-primary {
-  @include button-colors($white, $pink-500, lighten($pink-500, 10%), darken($pink-500, 15%));
+  @include button-colors($white, $pink-500, lighten($pink-500, 10%));
 }
 
 a.btn {
@@ -92,90 +93,5 @@ input[type="button"] {
   .btn-lg {
     height: 34px;
     line-height: 34px;
-  }
-}
-
-$transition-delay: 0.25s;
-$spinning-speed: 1s;
-$bubble-bounces: 2;
-
-@mixin button-size($identifier, $width, $height, $fontSize: 14px) {
-  button.#{$identifier} {
-    height: $height;
-    width: $width;
-    font-size: $fontSize;
-
-    &.spinning-loader {
-      height: $height;
-      width: $height;
-    }
-  }
-}
-
-.bubble {
-  animation: bubble $transition-delay $transition-delay ease $bubble-bounces;
-}
-
-@keyframes bubble {
-  0% {
-    transform: scale(1, 1);
-  }
-
-  50% {
-    transform: scale(0.95, 0.95);
-  }
-
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-.spinning-loader {
-  width: 40px;
-  min-width: 0;
-  vertical-align: middle;
-  cursor: progress;
-  border-radius: 50% !important;
-  border: 2px solid rgba(0, 0, 0, 0.25) !important;
-  padding: 0;
-  border-left-color: $pink-500 !important;
-  background: transparent;
-  transform: rotate(0deg);
-  color: rgb(255, 255, 255) !important;
-  animation: spinning $spinning-speed $transition-delay linear infinite;
-
-  :only-child {
-    display: none;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: transparent !important;
-  }
-}
-
-@keyframes spinning {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.error-status {
-  background: $red-400;
-
-  &::after {
-    font-family: "Material Icons";
-    content: "clear";
-    text-transform: none;
-    font-size: 24px;
-  }
-
-  :only-child {
-    display: none;
   }
 }

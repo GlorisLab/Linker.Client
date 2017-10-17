@@ -1,6 +1,6 @@
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 
-@mixin button-colors($color, $background, $back-light, $back-dark) {
+@mixin button-colors($color, $background, $back-light) {
   background-color: $background;
   border-color: $background;
   color: $color;
@@ -8,15 +8,6 @@
   &:hover {
     background-color: $back-light;
     border-color: $back-light;
-  }
-
-  &:focus,
-  &.focus,
-  &.active,
-  &:active,
-  &:active:focus {
-    background-color: $back-dark;
-    border-color: $back-dark;
   }
 
   &.disabled,
