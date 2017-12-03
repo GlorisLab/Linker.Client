@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/lib/Button';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
-import ButtonLoader from './ButtonLoader';
 
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 
@@ -28,6 +27,7 @@ import List from './List';
 
 import Modal from './Modal';
 
+import ButtonLoader from './ButtonLoader';
 import ButtonsGroup from './ButtonsGroup';
 import Radio from './Radio';
 import Checkbox from './Checkbox';

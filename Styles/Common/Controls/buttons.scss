@@ -10,7 +10,6 @@ $xs-btn-size: 24px;
 
   position: relative;
   display: inline-block;
-  min-width: 118px;
   height: $md-btn-size;
   margin-bottom: 0;
   padding: 0 20px;
@@ -36,6 +35,10 @@ $xs-btn-size: 24px;
 
 .btn-primary {
   @include button-colors($white, $pink-500, lighten($pink-500, 10%));
+}
+
+.btn-default {
+  @include button-colors($white, $gray-400, lighten($gray-400, 5%));
 }
 
 a.btn {

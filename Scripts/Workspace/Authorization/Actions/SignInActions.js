@@ -18,17 +18,15 @@ class AccountSignInActions {
       AccountSource.signIn(query)
         .loading(result => dispatch(this.signInCallback(result)))
         .then(result => {
-          const { token, user } = result.response;
+          SessionService.signIn(result.response);
+          dispatch(this.signInCallback(result));
 
-          SessionService.signIn(user, token);
-          dispatch(this.signInCallback({ ...result, message: 'Успешная авторизация' }));
-
-          setTimeout(() => WindowService.redirect(WindowService.origin), DELAY);
+          setTimeout(() => WindowService.redirect('http://localhost:3000/Dashboard.html'), DELAY);
         })
         .catch(result => {
-          dispatch(this.signInCallback({ ...result, message: 'Ошибка авторизации' }));
+          dispatch(this.signInCallback(result));
 
-          setTimeout(() => dispatch(this.signInCallback({ status: STATUS_DEFAULT, message: '' })), DELAY);
+          setTimeout(() => dispatch(this.signInCallback({ status: STATUS_DEFAULT })), DELAY);
         });
     };
   }

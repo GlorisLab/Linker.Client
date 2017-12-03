@@ -1,5 +1,5 @@
 .form-control {
-  padding: 8px 0;
+  padding: 8px;
   width: 100%;
   border: 0;
   border-bottom: 2px solid $gray-200;
@@ -27,4 +27,8 @@
     background: $gray-300;
     border-color: $gray-200;
   }
+}
+
+.has-icon .form-control {
+  padding: 8px 0;
 }

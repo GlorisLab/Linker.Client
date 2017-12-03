@@ -14,6 +14,7 @@ class SignIn extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="authorization-form registration-form">
         <RegistrationForm

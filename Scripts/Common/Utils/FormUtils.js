@@ -31,6 +31,10 @@ export default {
     return UserUtils.defineSurnameWithInitials(user);
   },
 
+  stopPropagation(event) {
+    event.stopPropagation();
+  },
+
   definePlaceholderField(label, placeholder) {
     return _.isString(placeholder) ? placeholder : (label && `${_.trimEnd(label, ':')}...`);
   },

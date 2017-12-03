@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { createActions } from 'realt';
 import WindowService from 'Services/WindowService';
 import SessionService from 'Services/SessionService';
@@ -18,17 +17,15 @@ class AccountRegistrationActions {
       AccountSource.registration(query)
         .loading(result => dispatch(this.registrationCallback(result)))
         .then(result => {
-          const { token, user } = result.response;
+          SessionService.signIn(result.response);
+          dispatch(this.registrationCallback(result));
 
-          SessionService.registration(user, token);
-          dispatch(this.registrationCallback({ ...result, message: 'Успешная авторизация' }));
-
-          setTimeout(() => WindowService.redirect(WindowService.origin), DELAY);
+          setTimeout(() => WindowService.redirect('http://localhost:3000/Dashboard.html'), DELAY);
         })
         .catch(result => {
-          dispatch(this.registrationCallback({ ...result, message: 'Ошибка авторизации' }));
+          dispatch(this.registrationCallback(result));
 
-          setTimeout(() => dispatch(this.registrationCallback({ status: STATUS_DEFAULT, message: '' })), DELAY);
+          setTimeout(() => dispatch(this.registrationCallback({ status: STATUS_DEFAULT })), DELAY);
         });
     };
   }

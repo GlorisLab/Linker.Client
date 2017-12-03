@@ -1,5 +1,5 @@
 import { createStore as reduxCreateStore, applyMiddleware } from 'redux';
-import { optimisticUpdates } from 'Middlewares';
+import { optimisticUpdates } from 'Scripts/Common/Middlewares';
 
 import rootReducer from '../Reducers';
 

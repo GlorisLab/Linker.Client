@@ -15,15 +15,15 @@ export default {
     }
   },
 
-  defineStatusIcon(status) {
+  defineStatusClassName(status) {
     switch (status) {
       case STATUS_SUCCESS:
-        return { section: 'main', name: 'success' };
+        return 'success';
       case STATUS_ERROR:
-        return { section: 'main', name: 'error' };
+        return 'error';
       case STATUS_NO_RESULTS:
       default:
-        return { section: 'main', name: 'list-empty' };
+        return 'loader';
     }
   },
 

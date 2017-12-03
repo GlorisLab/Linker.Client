@@ -1,3 +1,9 @@
-div {
-  color: black;
-}
+@import "../../Common/Configs/index";
+
+@import "header";
+@import "Albums/albums";
+@import "Albums/album";
+@import "Albums/album-form";
+
+@import "Links/create-link";
+@import "Links/links";

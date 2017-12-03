@@ -101,7 +101,6 @@ module.exports = {
       Services: resolve(common, 'Services'),
       Utils: resolve(common, 'Utils'),
       Constants: resolve(common, 'Constants'),
-      Sources: resolve(common, 'Sources'),
       Components: resolve(common, 'Components'),
       Decorators: resolve(common, 'Decorators'),
       Containers: resolve(common, 'Containers'),

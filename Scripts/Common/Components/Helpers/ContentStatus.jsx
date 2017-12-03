@@ -11,14 +11,12 @@ const HelpersContentStatus = ({ status, noMessage, message, className, children 
   }
 
   const statusMessage = HelpersUtils.defineStatusMessage(status, message);
-  const statusIcon = HelpersUtils.defineStatusIcon(status);
+  const statusClassName = HelpersUtils.defineStatusClassName(status);
 
   return (
     <div className={classNames('content-status', className)} data-status={status}>
       <div className="icon">
-        {status === STATUS_LOADING ?
-          <span className="spinner" /> : <Icon {...statusIcon} />
-        }
+        {<div className={statusClassName} />}
       </div>
       {noMessage ? null : <div className="message">{statusMessage}</div>}
     </div>

@@ -4,11 +4,15 @@
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  left: 31px;
+  left: 8px;
   top: 7px;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
+}
+
+.has-icon .control-label {
+  left: 31px;
 }
 
 input:focus ~ label,

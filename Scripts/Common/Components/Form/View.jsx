@@ -8,7 +8,7 @@ class BaseFormContainer extends Component {
     const { handleSubmit, onSubmit, children, errors, className } = this.props;
 
     return (
-      <div>
+      <div className={className}>
         <ReactCSSTransitionGroup
           transitionName="alert-validation"
           transitionEnterTimeout={1000}
@@ -16,7 +16,7 @@ class BaseFormContainer extends Component {
         >
           {errors && <ValidationAlert errors={errors} />}
         </ReactCSSTransitionGroup>
-        <form onSubmit={onSubmit && handleSubmit ? handleSubmit(onSubmit) : null} className={className}>
+        <form onSubmit={onSubmit && handleSubmit ? handleSubmit(onSubmit) : null}>
           {children}
         </form>
       </div>

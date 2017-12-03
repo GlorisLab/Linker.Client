@@ -1,62 +1,15 @@
-@mixin status {
-  height: 40px;
-  width: 40px;
-  min-width: 40px;
-  padding: 0;
-  margin: 0;
-  border-radius: 50%;
-  border: 2px solid $pink-500;
-  background: transparent !important;
-
-  span {
-    display: none;
-  }
-}
-
 .btn {
   &-status {
     &-loader {
-      @include status;
-
-      border: 2px solid #eee !important;
-      border-top: 2px solid $pink-500 !important;
-      outline-style: none;
-      transform: rotate(360deg);
-      transition: 0.6s;
-      cursor: progress;
-      animation: spinning 0.7s infinite ease-out;
+      @extend %helpers-status-loader;
     }
 
     &-error {
-      @include status;
-
-      &::before {
-        content: "close";
-        color: $pink-500;
-        display: block;
-        width: 36px;
-        height: 36px;
-        font-family: "Material Icons";
-        font-size: 28px;
-        line-height: 36px;
-        text-transform: none;
-      }
+      @extend %helpers-status-error;
     }
 
     &-success {
-      @include status;
-
-      &::before {
-        content: "done";
-        color: $pink-500;
-        display: block;
-        width: 36px;
-        height: 36px;
-        font-family: "Material Icons";
-        font-size: 28px;
-        line-height: 36px;
-        text-transform: none;
-      }
+      @extend %helpers-status-success;
     }
   }
 }

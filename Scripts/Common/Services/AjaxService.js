@@ -6,7 +6,7 @@ import {
   TYPE_PUT,
   AXIOS_CONFIG
 } from 'Constants/AjaxConstants';
-
+import LocalStorageService, { TOKEN } from 'Services/LocalStorageService';
 import AsyncService from './AsyncService';
 
 class AjaxService extends AsyncService {
@@ -27,8 +27,13 @@ class AjaxService extends AsyncService {
   }
 
   request(method, url, query, data, options) {
+    const token = LocalStorageService.get(TOKEN).token;
+    const headers = {
+      authorization: (token || null),
+    };
+
     const promise = new Promise((resolve, reject) => {
-      axios(AXIOS_CONFIG({ method, url, query, ...options }))
+      axios(AXIOS_CONFIG({ method, url, query, headers, ...options }))
         .then(response => resolve(this.success(query, response.data, data)))
         .catch(error => reject(this.error(query, error.response ? error.response.data : error, data)));
     });

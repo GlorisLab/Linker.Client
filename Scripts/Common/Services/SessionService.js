@@ -22,11 +22,8 @@ class SessionService {
     document.cookie = `${name}=; path=/; expires=${new Date(0).toUTCString()}`;
   }
 
-  signIn(user, token) {
-    this.setCookie(ACCESS_TOKEN, token.value);
-
-    LocalStorageService.set(TOKEN, token.value);
-    LocalStorageService.set(USER, user);
+  signIn(token) {
+    LocalStorageService.set(TOKEN, token);
   }
 
   signOut() {

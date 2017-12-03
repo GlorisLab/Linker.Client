@@ -6,7 +6,13 @@ import { FormGroup, ControlLabel } from 'Components/Controls';
 const BaseFieldRegular = ({ inline, hidden, required, validationState, value, label, asyncValidating, children, className, icon }) => (
   <FormGroup
     validationState={validationState}
-    className={classNames(className, { inline: inline || icon, hidden, 'has-loading': asyncValidating, 'has-not-empty': value })}
+    className={classNames(className, {
+      inline: inline || icon,
+      'has-icon': icon,
+      hidden,
+      'has-loading': asyncValidating,
+      'has-not-empty': value
+    })}
   >
     {icon && <i className="material-icons">{icon}</i>}
     {children}

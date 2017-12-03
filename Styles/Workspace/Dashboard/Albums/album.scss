@@ -1,0 +1,105 @@
+$animation-speed: 500ms;
+
+.wrap-album {
+  text-align: center;
+  perspective: 1700px;
+  position: relative;
+  width: 170px;
+  height: 250px;
+  margin: 5px;
+
+  .album {
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.2);
+    background: white;
+    width: 170px;
+    height: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all $transition;
+    position: absolute;
+    background-size: cover;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    .header {
+      height: 80px;
+      background: $pink-500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      font-size: 18px;
+      color: white;
+      padding: 10px;
+    }
+
+    .description {
+      margin: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 150px;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      background: $pink-100;
+      height: 44px;
+      max-height: 0;
+      align-items: center;
+      opacity: 0;
+      color: white;
+      transition: all 0.5s ease-out 0.2s;
+      cursor: default;
+
+      &:hover {
+        transition: all $transition;
+        opacity: 1 !important;
+      }
+
+      i {
+        cursor: pointer;
+
+        &:hover {
+          color: $pink-500;
+        }
+      }
+    }
+
+    &:hover {
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+
+      .controls {
+        opacity: 0.4;
+        max-height: 44px;
+      }
+    }
+  }
+
+  .album-enter.album-enter-active {
+    transform: rotateY(0deg);
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+
+  .album-enter {
+    z-index: 1;
+    transform: rotateY(-180deg);
+    transition: all $animation-speed ease-out;
+  }
+
+  .album-leave {
+    z-index: 2;
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.2);
+    transition: all $animation-speed ease-out;
+  }
+
+  .album-leave.album-leave-active {
+    z-index: 1;
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.2);
+    transform: rotateY(180deg);
+  }
+}
