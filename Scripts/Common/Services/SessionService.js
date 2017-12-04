@@ -1,6 +1,4 @@
-import LocalStorageService, { TOKEN, USER } from 'Services/LocalStorageService';
-
-const ACCESS_TOKEN = 'access_token';
+import LocalStorageService, { TOKEN } from 'Services/LocalStorageService';
 
 class SessionService {
   constructor() {
@@ -27,10 +25,7 @@ class SessionService {
   }
 
   signOut() {
-    this.removeCookie(ACCESS_TOKEN);
-
     LocalStorageService.remove(TOKEN);
-    LocalStorageService.remove(USER);
   }
 }
 

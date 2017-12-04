@@ -5,7 +5,10 @@ import AlbumsSource from '../Sources/AlbumsSource';
 
 class DashboardPagesAlbumsActionsView {
   constructor() {
-    this.generate('editingAlbumSelect');
+    this.generate(
+      'editingAlbumSelect',
+      'filterChange'
+    );
   }
 
   albumsGet(userId, query) {
@@ -21,6 +24,10 @@ class DashboardPagesAlbumsActionsView {
 
   albumDelete(id) {
     return AlbumsSource.deleteAlbum(id);
+  }
+
+  albumTypeToggle(id, type) {
+    return AlbumsSource.changeAlbumType(id, type);
   }
 }
 

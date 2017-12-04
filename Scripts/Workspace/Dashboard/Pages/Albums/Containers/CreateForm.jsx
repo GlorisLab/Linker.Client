@@ -13,14 +13,18 @@ class DashboardPagesAlbumsCreateForm extends Component {
 
     const {
       reset,
-      actions: { albumCreate }
+      actions: { albumCreate, formReset }
     } = props;
 
     this.state = {
       isOpen: false
     };
 
-    this.openToggle = () => { reset(); this.setState({ isOpen: !this.state.isOpen }); };
+    this.openToggle = () => {
+      reset();
+      formReset()
+      this.setState({ isOpen: !this.state.isOpen });
+    };
     this.onAlbumCreate = album => albumCreate({ ...album, userId: this.props.userId }, this.openToggle);
   }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connectToStore } from 'Decorators/ConnectDecorators';
 import { ContentStatus } from 'Components/Helpers';
+import { ButtonLoader } from 'Components/Controls';
 
 import ViewActions from '../Actions/ViewActions';
 import CreateForm from './CreateForm';
@@ -11,24 +12,39 @@ class DashboardPagesAlbumsView extends Component {
   constructor(props) {
     super();
 
-    const { albumsGet, albumEditFormOpen, albumDelete } = props.actions;
+    const {
+      albumsGet,
+      albumEditFormOpen,
+      albumTypeToggle,
+      albumDelete,
+      filterChange
+    } = props.actions;
 
-    this.componentDidMount = () => albumsGet(this.props.userId, this.props.filter);
+    this.componentDidMount = () => this.dataFetch();
 
-    this.onAlbumOpen = (id, name) => () => this.props.history.push(`/Dashboard.html/Links/${id}/${name}`);
+    this.dataFetch = filter => albumsGet(this.props.userId, filter || this.props.filter);
+    this.onAlbumOpen = (id, name) => () => this.props.history.push(`/Dashboard/Links/${id}/${name}`);
     this.onAlbumDelete = id => () => albumDelete(id);
-    this.onAlbumEditFormOpen = album => event => {
-      event.stopPropagation();
+    this.onAlbumTypeToggle = (id, type) => () => albumTypeToggle(id, type);
+    this.onAlbumEditFormOpen = album => () => albumEditFormOpen(album);
+    this.onFilterChange = filter => filterChange(filter);
+    this.onDownloadMore = () => this.onFilterChange({ offset: this.props.filter.offset + this.props.filter.limit });
+  }
+  componentWillReceiveProps({ filter: { offset, limit }, searcherValue }) {
+    const { filter: { offset: prevOffset }, searcherValue: prevSearcherValue } = this.props;
 
-      albumEditFormOpen(album);
-    };
+    if (prevOffset !== offset) this.dataFetch({ searcherValue, offset, limit });
+    if (searcherValue !== prevSearcherValue) {
+      this.onFilterChange({ offset: 0 });
+      this.dataFetch({ searcherValue, offset: 0, limit });
+    }
   }
 
   render() {
-    const { data, status, editingAlbum } = this.props;
+    const { data, contentStatus, status, editingAlbum } = this.props;
 
     return (
-      <ContentStatus status={status}>
+      <ContentStatus status={contentStatus}>
         <div className="albums">
           {data.map(({ _id, ...album }) => (
             <Album
@@ -39,9 +55,15 @@ class DashboardPagesAlbumsView extends Component {
               onAlbumOpen={this.onAlbumOpen}
               onAlbumEditFormOpen={this.onAlbumEditFormOpen}
               onAlbumDelete={this.onAlbumDelete}
+              onAlbumTypeToggle={this.onAlbumTypeToggle}
             />))
           }
           <CreateForm userId={this.props.userId} />
+        </div>
+        <div className="download-more">
+          <ButtonLoader status={status} onClick={this.onDownloadMore}>
+            <i className="material-icons" title="Show more">arrow_downward</i>
+          </ButtonLoader>
         </div>
       </ContentStatus>
     );
@@ -54,12 +76,15 @@ DashboardPagesAlbumsView.propTypes = {
   filter: PropTypes.object,
   editingAlbum: PropTypes.string,
   userId: PropTypes.string,
+  searcherValue: PropTypes.string,
   status: PropTypes.string,
+  contentStatus: PropTypes.string,
   data: PropTypes.array
 };
 
-const mapStateToProps = ({ albums, user }) => ({
+const mapStateToProps = ({ albums, user, searcher }) => ({
   ...albums,
+  searcherValue: searcher.value,
   userId: user['_id']
 });
 

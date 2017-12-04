@@ -1,6 +1,8 @@
 @import "../../Common/Configs/index";
 
-@import "header";
+@import "Shared/header";
+@import "Shared/user-info";
+@import "download-more";
 @import "Albums/albums";
 @import "Albums/album";
 @import "Albums/album-form";

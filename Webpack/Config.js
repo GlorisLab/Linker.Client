@@ -11,7 +11,7 @@ const context = resolve(__dirname, '..');
 const scripts = resolve(context, 'Scripts');
 const common = resolve(scripts, 'Common');
 
-const outputPath = resolve('..', 'Linker.CDN', 'public', 'Dist');
+const outputPath = resolve('..', 'Linker.CDN', 'public', 'dist');
 
 const production = getProductionState(NODE_ENV);
 const fileName = getFileName(production);

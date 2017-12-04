@@ -6,10 +6,10 @@ $animation-speed: 500ms;
   position: relative;
   width: 170px;
   height: 250px;
-  margin: 5px;
+  margin: 15px;
 
   .album {
-    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.2);
     background: white;
     width: 170px;
     height: 250px;
@@ -70,7 +70,7 @@ $animation-speed: 500ms;
     }
 
     &:hover {
-      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.4);
 
       .controls {
         opacity: 0.4;

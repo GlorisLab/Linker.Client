@@ -2,10 +2,10 @@ import { createActions } from 'realt';
 
 import UserSource from '../Sources/UserSource';
 
-class AccountRegistrationActions {
+class DashboardUserActions {
   userGet() {
     return UserSource.getUser();
   }
 }
 
-export default createActions(AccountRegistrationActions);
+export default createActions(DashboardUserActions);

@@ -5,7 +5,10 @@ import AlbumsSource from '../Sources/AlbumsSource';
 
 class DashboardPagesAlbumsActionsCreate {
   constructor() {
-    this.generate('albumCreateCallback');
+    this.generate(
+      'albumCreateCallback',
+      'formReset'
+    );
   }
 
   albumCreate(query, callback) {

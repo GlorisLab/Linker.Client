@@ -7,9 +7,7 @@ import AccountSource from '../Sources/AccountSource';
 
 class AccountRegistrationActions {
   constructor() {
-    this.generate(
-      'registrationCallback'
-    );
+    this.generate('registrationCallback');
   }
 
   registration(query) {
@@ -17,10 +15,10 @@ class AccountRegistrationActions {
       AccountSource.registration(query)
         .loading(result => dispatch(this.registrationCallback(result)))
         .then(result => {
-          SessionService.signIn(result.response);
+          SessionService.signIn(result.response.token);
           dispatch(this.registrationCallback(result));
 
-          setTimeout(() => WindowService.redirect('http://localhost:3000/Dashboard.html'), DELAY);
+          setTimeout(() => WindowService.redirect('/Dashboard'), DELAY);
         })
         .catch(result => {
           dispatch(this.registrationCallback(result));

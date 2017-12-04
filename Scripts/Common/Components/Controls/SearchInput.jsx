@@ -13,6 +13,12 @@ class ControlsSearchInput extends Component {
     this.onSearch = this.onSearch.bind(this);
   }
 
+  componentWillReceiveProps({ value }) {
+    const { value: prevValue } = this.props;
+
+    if (value !== prevValue && value !== this.state.value) this.setState({ value });
+  }
+
   onChange({ target: { value } }) {
     this.setState({ value });
 
@@ -56,6 +62,7 @@ ControlsSearchInput.propTypes = {
   placeholder: PropTypes.string,
   searchLabel: PropTypes.string,
   className: PropTypes.string,
+  value: PropTypes.string,
   onChange: PropTypes.func
 };
 

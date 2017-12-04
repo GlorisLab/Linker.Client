@@ -7,6 +7,7 @@ import Actions from '../Actions/CreateFormActions';
 class DashboardPagesAlbumsCreateFormReducer {
   constructor() {
     this.bindAction(Actions.albumCreateCallback, this.handleAlbumCreate);
+    this.bindAction(Actions.formReset, this.handleFormReset(this.initialState));
   }
 
   get initialState() {
@@ -17,6 +18,10 @@ class DashboardPagesAlbumsCreateFormReducer {
 
   handleAlbumCreate(state, { status }) {
     return _.assign({}, state, { status });
+  }
+
+  handleFormReset(state) {
+    return () => _.assign({}, state);
   }
 }
 

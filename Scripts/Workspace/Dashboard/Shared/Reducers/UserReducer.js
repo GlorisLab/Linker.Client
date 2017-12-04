@@ -4,7 +4,7 @@ import { STATUS_DEFAULT } from 'Constants/StatusConstants';
 
 import Actions from '../Actions/UserActions';
 
-class SignInReducer {
+class DashboardUserReducer {
   constructor() {
     this.bindAction(Actions.userGet, this.handleUserGet);
   }
@@ -23,4 +23,4 @@ class SignInReducer {
   }
 }
 
-export default createReducer(SignInReducer);
+export default createReducer(DashboardUserReducer);

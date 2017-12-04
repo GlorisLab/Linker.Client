@@ -8,7 +8,7 @@ import { FIELD_MAX_LENGTH } from '../Constants/SignInConstants';
 const SignInForm = ({ status, ...props }) => (
   <Form {...props}>
     <Input name="email" label="Email" icon="email" maxLength={FIELD_MAX_LENGTH} />
-    <Input name="password" label="Password" icon="lock" maxLength={FIELD_MAX_LENGTH} />
+    <Input name="password" label="Password" type="password" icon="lock" maxLength={FIELD_MAX_LENGTH} />
     <ButtonsGroup>
       <ButtonLoader status={status}>sign in</ButtonLoader>
     </ButtonsGroup>

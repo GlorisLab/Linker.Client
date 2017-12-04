@@ -7,7 +7,7 @@ import LinksView from '../../Pages/Links/Containers/View';
 import UserProvider from './UserProvider';
 
 const EconomicsApp = () => {
-  const path = '/Dashboard.html';
+  const path = '/Dashboard';
 
   return (
     <Layout>

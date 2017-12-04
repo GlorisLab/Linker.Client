@@ -60,10 +60,10 @@
 }
 
 @mixin status {
-  height: 40px;
-  width: 40px;
+  height: 40px !important;
+  width: 40px !important;
   min-width: 40px;
-  padding: 0;
+  padding: 0 !important;
   margin: 0;
   border-radius: 50%;
   border: 2px solid $pink-500;

@@ -27,7 +27,7 @@ class AjaxService extends AsyncService {
   }
 
   request(method, url, query, data, options) {
-    const token = LocalStorageService.get(TOKEN).token;
+    const token = LocalStorageService.get(TOKEN);
     const headers = {
       authorization: (token || null),
     };

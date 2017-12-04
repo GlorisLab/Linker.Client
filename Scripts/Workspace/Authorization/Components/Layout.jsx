@@ -24,12 +24,12 @@ class AuthorizationLayout extends Component {
     return (
       <div className="authorization-layout">
         <div className="authorization-content-wrap">
-          <img alt="sorry..." src="http://127.0.0.1:3000/sign-in.png" />
+          <img alt="sorry..." src="http://localhost:8080/contents/sign-in.png" />
           <Button bsStyle="primary" className="toggled-view" onClick={this.onToggleView}>
             {
               isSignIn ?
-                [<i className="material-icons">person_add</i>, <span>Registration</span>] :
-                [<i className="material-icons">person</i>, <span>Sign in</span>]
+                [<i className="material-icons" key="reqistration">person_add</i>, <span>Registration</span>] :
+                [<i className="material-icons" key="signIn">person</i>, <span>Sign in</span>]
             }
           </Button>
           <ReactCSSTransitionGroup

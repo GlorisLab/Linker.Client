@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { createActions } from 'realt';
 import WindowService from 'Services/WindowService';
 import SessionService from 'Services/SessionService';
@@ -8,9 +7,7 @@ import AccountSource from '../Sources/AccountSource';
 
 class AccountSignInActions {
   constructor() {
-    this.generate(
-      'signInCallback'
-    );
+    this.generate('signInCallback');
   }
 
   signIn(query) {
@@ -18,10 +15,10 @@ class AccountSignInActions {
       AccountSource.signIn(query)
         .loading(result => dispatch(this.signInCallback(result)))
         .then(result => {
-          SessionService.signIn(result.response);
+          SessionService.signIn(result.response.token);
           dispatch(this.signInCallback(result));
 
-          setTimeout(() => WindowService.redirect('http://localhost:3000/Dashboard.html'), DELAY);
+          setTimeout(() => WindowService.redirect('/Dashboard'), DELAY);
         })
         .catch(result => {
           dispatch(this.signInCallback(result));
