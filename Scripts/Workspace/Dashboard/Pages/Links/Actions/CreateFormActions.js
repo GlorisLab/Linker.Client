@@ -6,7 +6,8 @@ import LinksSource from '../Sources/LinksSource';
 class DashboardPagesLinksActionsCreate {
   constructor() {
     this.generate(
-      'linkCreateCallback'
+      'linkCreateCallback',
+      'formReset',
     );
   }
 

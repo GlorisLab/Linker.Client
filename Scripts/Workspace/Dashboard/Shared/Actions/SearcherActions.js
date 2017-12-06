@@ -4,7 +4,7 @@ class DashboardSearcherActions {
   constructor() {
     this.generate(
       'changeValue',
-      'reset'
+      'searcherClear'
     );
   }
 }

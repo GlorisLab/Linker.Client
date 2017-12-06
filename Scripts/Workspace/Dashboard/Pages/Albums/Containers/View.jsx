@@ -4,6 +4,7 @@ import { connectToStore } from 'Decorators/ConnectDecorators';
 import { ContentStatus } from 'Components/Helpers';
 import { ButtonLoader } from 'Components/Controls';
 
+import SearcherActions from '../../../Shared/Actions/SearcherActions';
 import ViewActions from '../Actions/ViewActions';
 import CreateForm from './CreateForm';
 import Album from '../Components/Album';
@@ -17,12 +18,14 @@ class DashboardPagesAlbumsView extends Component {
       albumEditFormOpen,
       albumTypeToggle,
       albumDelete,
-      filterChange
+      filterChange,
+      searcherClear
     } = props.actions;
 
     this.componentDidMount = () => this.dataFetch();
+    this.componentWillUnmount = () => searcherClear();
 
-    this.dataFetch = filter => albumsGet(this.props.userId, filter || this.props.filter);
+    this.dataFetch = filter => albumsGet(filter || this.props.filter);
     this.onAlbumOpen = (id, name) => () => this.props.history.push(`/Dashboard/Links/${id}/${name}`);
     this.onAlbumDelete = id => () => albumDelete(id);
     this.onAlbumTypeToggle = (id, type) => () => albumTypeToggle(id, type);
@@ -30,28 +33,35 @@ class DashboardPagesAlbumsView extends Component {
     this.onFilterChange = filter => filterChange(filter);
     this.onDownloadMore = () => this.onFilterChange({ offset: this.props.filter.offset + this.props.filter.limit });
   }
+
   componentWillReceiveProps({ filter: { offset, limit }, searcherValue }) {
     const { filter: { offset: prevOffset }, searcherValue: prevSearcherValue } = this.props;
 
     if (prevOffset !== offset) this.dataFetch({ searcherValue, offset, limit });
     if (searcherValue !== prevSearcherValue) {
       this.onFilterChange({ offset: 0 });
-      this.dataFetch({ searcherValue, offset: 0, limit });
+      this.dataFetch({ query: searcherValue, offset: 0, limit });
     }
   }
 
   render() {
-    const { data, contentStatus, status, editingAlbum } = this.props;
+    const {
+      hiddenDownloadMore,
+      data,
+      contentStatus,
+      status,
+      editingAlbum
+    } = this.props;
 
     return (
       <ContentStatus status={contentStatus}>
-        <div className="albums">
-          {data.map(({ _id, ...album }) => (
+        <div className="cards">
+          {data.map(({ id, ...album }) => (
             <Album
-              key={_id}
+              key={id}
               {...album}
-              isEditing={editingAlbum === _id}
-              id={_id}
+              isEditing={editingAlbum === id}
+              id={id}
               onAlbumOpen={this.onAlbumOpen}
               onAlbumEditFormOpen={this.onAlbumEditFormOpen}
               onAlbumDelete={this.onAlbumDelete}
@@ -60,17 +70,21 @@ class DashboardPagesAlbumsView extends Component {
           }
           <CreateForm userId={this.props.userId} />
         </div>
-        <div className="download-more">
-          <ButtonLoader status={status} onClick={this.onDownloadMore}>
-            <i className="material-icons" title="Show more">arrow_downward</i>
-          </ButtonLoader>
-        </div>
+        {!hiddenDownloadMore ?
+          <div className="download-more">
+            <ButtonLoader status={status} onClick={this.onDownloadMore}>
+              <i className="material-icons" title="Show more">arrow_downward</i>
+            </ButtonLoader>
+          </div> :
+          null
+        }
       </ContentStatus>
     );
   }
 }
 
 DashboardPagesAlbumsView.propTypes = {
+  hiddenDownloadMore: PropTypes.bool,
   actions: PropTypes.object,
   history: PropTypes.object,
   filter: PropTypes.object,
@@ -85,7 +99,7 @@ DashboardPagesAlbumsView.propTypes = {
 const mapStateToProps = ({ albums, user, searcher }) => ({
   ...albums,
   searcherValue: searcher.value,
-  userId: user['_id']
+  hiddenDownloadMore: albums.lastCount < albums.filter.limit,
 });
 
-export default connectToStore({ mapStateToProps, actions: ViewActions })(DashboardPagesAlbumsView);
+export default connectToStore({ mapStateToProps, actions: { ...ViewActions, ...SearcherActions } })(DashboardPagesAlbumsView);

@@ -47,10 +47,6 @@
     &::after {
       position: absolute;
       right: 10px;
-      top: 14px;
-      font-family: 'Material Icons';
-      font-weight: 400;
-      font-style: normal;
       font-size: 24px;
       line-height: 1;
       letter-spacing: normal;
@@ -59,6 +55,10 @@
       white-space: nowrap;
       word-wrap: normal;
       direction: ltr;
+      top: 14px;
+      font-weight: 400;
+      font-style: normal;
+      font-family: 'Material Icons';
       content: "keyboard_arrow_right";
       transition: all $transition;
     }
@@ -66,6 +66,7 @@
 }
 
 #user-info-dropdown {
+  width: 100%;
   background: inherit;
   color: black;
   border: 0;
@@ -73,7 +74,7 @@
   overflow: hidden;
   padding: 0 44px 0 10px;
   text-overflow: ellipsis;
-  text-align: right;
+  text-align: center;
 
   .caret {
     display: none;

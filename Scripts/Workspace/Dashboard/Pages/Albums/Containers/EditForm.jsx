@@ -22,7 +22,7 @@ class DashboardPagesAlbumsCreateForm extends Component {
     const { status, ...props } = this.props;
 
     return (
-      <div className="album">
+      <div className="card">
         <Form
           {...props}
           onSubmit={this.onAlbumEdit}

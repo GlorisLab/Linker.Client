@@ -1,6 +1,6 @@
 import { createReducer } from 'realt';
 import _ from 'lodash';
-import { STATUS_DEFAULT } from 'Constants/StatusConstants';
+import { STATUS_LOADING, STATUS_DEFAULT } from 'Constants/StatusConstants';
 
 import Actions from '../Actions/UserActions';
 
@@ -12,7 +12,7 @@ class DashboardUserReducer {
   get initialState() {
     return {
       user: {},
-      status: STATUS_DEFAULT
+      status: STATUS_LOADING
     };
   }
 

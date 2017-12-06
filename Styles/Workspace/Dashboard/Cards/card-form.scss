@@ -1,6 +1,6 @@
 $animation-speed: 500ms;
 
-.album-form {
+.card-form {
   height: 100%;
   margin: 0 8px;
   padding-top: 8px;
@@ -25,7 +25,7 @@ $animation-speed: 500ms;
   }
 }
 
-.new-album {
+.new-card {
   opacity: 0.6;
   border: dashed 2px $gray-500;
   position: relative;
@@ -44,7 +44,7 @@ $animation-speed: 500ms;
 }
 
 @media (max-width: 1000px) {
-  .new-album .btn {
+  .new-card .btn {
     width: 30px;
   }
 }

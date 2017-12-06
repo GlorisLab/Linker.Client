@@ -32,14 +32,14 @@ class DashboardPagesAlbumsCreateForm extends Component {
     const { status, ...props } = this.props;
 
     return (
-      <div className="wrap-album">
+      <div className="wrap-card">
         <ReactCSSTransitionGroup
-          transitionName="album"
+          transitionName="card"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
         >
           {this.state.isOpen &&
-            <div className="album">
+            <div className="card">
               <Form
                 {...props}
                 onSubmit={this.onAlbumCreate}
@@ -52,7 +52,7 @@ class DashboardPagesAlbumsCreateForm extends Component {
               />
             </div>}
           {!this.state.isOpen &&
-            <div className="album new-album">
+            <div className="card new-card">
               <Button onClick={this.openToggle}><i className="material-icons">add</i></Button>
             </div>}
         </ReactCSSTransitionGroup>

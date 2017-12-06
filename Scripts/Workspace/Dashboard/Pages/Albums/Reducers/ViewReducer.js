@@ -12,6 +12,7 @@ class DashboardPagesAlbumsViewReducer {
     this.bindAction(Actions.albumsGet, this.handleAlbumsGet);
     this.bindAction(Actions.editingAlbumSelect, this.handleEditingAlbumSelect);
     this.bindAction(Actions.albumTypeToggle, this.handleAlbumTypeToggle);
+    this.bindAction(Actions.albumDelete, this.handleAlbumDelete);
     this.bindAction(Actions.filterChange, this.handleFilterChange);
     this.bindAction(CreateFormActions.albumCreateCallback, this.handleAlbumCreate);
     this.bindAction(EditFormActions.albumEditCallback, this.handleAlbumEdit);
@@ -26,17 +27,30 @@ class DashboardPagesAlbumsViewReducer {
       filter: {
         limit: 25,
         offset: 0,
-        search: '',
+        query: '',
       }
     };
   }
 
   handleAlbumsGet(state, { status, isSuccess, response }) {
-    if (!isSuccess) return _.assign({}, state, { status });
+    if (state.filter.offset !== 0) {
+      if (!isSuccess) return update(state, { $merge: { status } });
 
-    if (state.filter.offset !== 0) return update(state, { $merge: { status: STATUS_DEFAULT, data: [...state.data, ...response] } });
+      return update(state, {
+        $merge: { status: STATUS_DEFAULT, data: [...state.data, ...response], lastCount: response.length }
+      });
+    }
 
-    return update(state, { $merge: { contentStatus: STATUS_DEFAULT, status: STATUS_DEFAULT, data: response } });
+    if (!isSuccess) return update(state, { $merge: { contentStatus: status } });
+
+    return update(state, {
+      $merge: {
+        contentStatus: STATUS_DEFAULT,
+        status: STATUS_DEFAULT,
+        data: response,
+        lastCount: response.length
+      }
+    });
   }
 
   handleEditingAlbumSelect(state, editingAlbum) {
@@ -60,7 +74,7 @@ class DashboardPagesAlbumsViewReducer {
   handleAlbumTypeToggle(state, { isSuccess, data }) {
     if (!isSuccess) return state;
 
-    const index = _.findIndex(state.data, ({ _id }) => data.id === _id);
+    const index = _.findIndex(state.data, ({ id }) => data.id === id);
 
     if (index < 0) return state;
 
@@ -73,10 +87,26 @@ class DashboardPagesAlbumsViewReducer {
     });
   }
 
+  handleAlbumDelete(state, { isSuccess, data }) {
+    if (!isSuccess) return state;
+
+    const index = _.findIndex(state.data, ({ id }) => data === id);
+
+    if (index < 0) return state;
+
+    return update(state, {
+      $merge: {
+        status: STATUS_DEFAULT,
+        totalCount: state.totalCount - 1
+      },
+      data: { $splice: [[index, 1]] }
+    });
+  }
+
   handleAlbumEdit(state, { isSuccess, response, query }) {
     if (!isSuccess) return state;
 
-    const index = _.findIndex(state.data, ({ _id }) => query.id === _id);
+    const index = _.findIndex(state.data, ({ id }) => query.id === id);
 
     if (index < 0) return state;
 

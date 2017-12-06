@@ -24,7 +24,7 @@ class AuthorizationLayout extends Component {
     return (
       <div className="authorization-layout">
         <div className="authorization-content-wrap">
-          <img alt="sorry..." src="http://localhost:8080/contents/sign-in.png" />
+          <img alt="sorry..." src="http://localhost:8090/contents/sign-in.png" />
           <Button bsStyle="primary" className="toggled-view" onClick={this.onToggleView}>
             {
               isSignIn ?

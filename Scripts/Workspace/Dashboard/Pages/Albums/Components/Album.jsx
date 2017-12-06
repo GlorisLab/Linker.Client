@@ -17,15 +17,15 @@ const DashboardPagesAlbum = ({
   onAlbumTypeToggle,
   onAlbumDelete
 }) => (
-  <div className="wrap-album">
+  <div className="wrap-card">
     <ReactCSSTransitionGroup
-      transitionName="album"
+      transitionName="card"
       transitionEnterTimeout={500}
       transitionLeaveTimeout={500}
     >
       {isEditing && <EditForm />}
       {!isEditing &&
-      <div className="album" onClick={onAlbumOpen(id, title)}>
+      <div className="card album" onClick={onAlbumOpen(id, title)}>
         <div className="header">{title}</div>
         <div className="description">{description}</div>
         <div className="controls" onClick={FormUtils.stopPropagation}>

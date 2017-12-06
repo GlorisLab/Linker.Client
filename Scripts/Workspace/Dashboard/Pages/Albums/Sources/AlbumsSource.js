@@ -2,8 +2,8 @@ import AjaxService from 'Services/AjaxService';
 import { ALBUM_URL } from 'Constants/UrlConstants';
 
 export default {
-  getAlbums(userId, query) {
-    return AjaxService.getRequest(`${ALBUM_URL}findByUser/${userId}`, query);
+  getAlbums(query) {
+    return AjaxService.getRequest(`${ALBUM_URL}findByUser`, query);
   },
 
   createAlbum(query) {
@@ -19,7 +19,6 @@ export default {
   },
 
   deleteAlbum(id) {
-    console.log('TODO DO API');
-    // return AjaxService.postRequest(`${ALBUM_URL}edit/${query.id}`, query);
+    return AjaxService.getRequest(`${ALBUM_URL}remove/${id}`, null, id);
   }
 };

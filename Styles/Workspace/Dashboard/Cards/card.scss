@@ -1,6 +1,6 @@
 $animation-speed: 500ms;
 
-.wrap-album {
+.wrap-card {
   text-align: center;
   perspective: 1700px;
   position: relative;
@@ -8,7 +8,7 @@ $animation-speed: 500ms;
   height: 250px;
   margin: 15px;
 
-  .album {
+  .card {
     box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.2);
     background: white;
     width: 170px;
@@ -21,24 +21,6 @@ $animation-speed: 500ms;
     background-size: cover;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-
-    .header {
-      height: 80px;
-      background: $pink-500;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: center;
-      font-size: 18px;
-      color: white;
-      padding: 10px;
-    }
-
-    .description {
-      margin: 10px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-height: 150px;
-    }
 
     .controls {
       position: absolute;
@@ -79,25 +61,25 @@ $animation-speed: 500ms;
     }
   }
 
-  .album-enter.album-enter-active {
+  .card-enter.card-enter-active {
     transform: rotateY(0deg);
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.2);
     z-index: 2;
   }
 
-  .album-enter {
+  .card-enter {
     z-index: 1;
     transform: rotateY(-180deg);
     transition: all $animation-speed ease-out;
   }
 
-  .album-leave {
+  .card-leave {
     z-index: 2;
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.2);
     transition: all $animation-speed ease-out;
   }
 
-  .album-leave.album-leave-active {
+  .card-leave.card-leave-active {
     z-index: 1;
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.2);
     transform: rotateY(180deg);

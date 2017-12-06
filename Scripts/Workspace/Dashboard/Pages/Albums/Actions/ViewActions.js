@@ -11,8 +11,8 @@ class DashboardPagesAlbumsActionsView {
     );
   }
 
-  albumsGet(userId, query) {
-    return AlbumsSource.getAlbums(userId, query);
+  albumsGet(query) {
+    return AlbumsSource.getAlbums(query);
   }
 
   albumEditFormOpen(album) {

@@ -25,7 +25,8 @@ class SignIn extends Component {
 
 SignIn.propTypes = {
   children: PropTypes.node,
-  actions: PropTypes.object
+  actions: PropTypes.object,
+  status: PropTypes.string
 };
 
 export default connectToStore({ name: 'user', actions: UserActions })(SignIn);

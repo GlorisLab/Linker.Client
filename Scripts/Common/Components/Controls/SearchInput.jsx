@@ -41,6 +41,7 @@ class ControlsSearchInput extends Component {
     return (
       <form className={classNames('search-input', className)} onSubmit={this.onSearch}>
         <FormControl
+          value={this.state.value}
           placeholder={placeholder}
           onChange={this.onChange}
         />

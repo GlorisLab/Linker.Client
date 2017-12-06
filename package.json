@@ -38,6 +38,7 @@
     "redux-thunk-fsa": "4.0.1",
     "webpack": "3.6.0",
     "react-bootstrap": "0.31.5",
+    "color-hash": "1.0.3",
     "store": "2.0.12"
   },
   "devDependencies": {

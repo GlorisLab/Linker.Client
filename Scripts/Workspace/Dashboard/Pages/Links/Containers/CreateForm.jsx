@@ -13,31 +13,36 @@ class DashboardPagesLinkCreateForm extends Component {
 
     const {
       reset,
-      actions: { linkCreate }
+      actions: { linkCreate, formReset },
     } = props;
 
     this.state = {
       isOpen: false
     };
 
-    this.openToggle = () => { reset(); this.setState({ isOpen: !this.state.isOpen }); };
-    this.onLinkCreate = link => linkCreate({ ...link, userId: this.props.userId }, this.openToggle);
+    this.openToggle = () => {
+      reset();
+      formReset();
+      this.setState({ isOpen: !this.state.isOpen });
+    };
+    this.onLinkCreate = link => linkCreate({ ...link, albumId: this.props.albumId }, this.openToggle);
+    this.onCreateCancel = () => this.openToggle();
   }
 
   render() {
     return (
-      <div className="wrap-create-link">
+      <div className="wrap-card">
         <ReactCSSTransitionGroup
-          transitionName="createlink"
+          transitionName="card"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
         >
           {this.state.isOpen &&
-            <div className="link create-link">
-              <Form onSubmit={this.onLinkCreate} {...this.props} />
+            <div className="card">
+              <Form onSubmit={this.onLinkCreate} onCreateCancel={this.onCreateCancel} {...this.props} />
             </div>}
           {!this.state.isOpen &&
-            <div className="link new-link">
+            <div className="card new-card">
               <Button onClick={this.openToggle}><i className="material-icons">add</i></Button>
             </div>}
         </ReactCSSTransitionGroup>
@@ -47,8 +52,8 @@ class DashboardPagesLinkCreateForm extends Component {
 }
 
 DashboardPagesLinkCreateForm.propTypes = {
+  albumId: PropTypes.string,
   actions: PropTypes.object,
-  userId: PropTypes.string,
   reset: PropTypes.func
 };
 

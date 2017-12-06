@@ -6,7 +6,7 @@ import Actions from '../Actions/SearcherActions';
 class DashboardSearcherReducer {
   constructor() {
     this.bindAction(Actions.changeValue, this.handleChangeValue);
-    this.bindAction(Actions.reset, this.handleReset);
+    this.bindAction(Actions.searcherClear, this.handleSearcherClear);
   }
 
   get initialState() {
@@ -17,7 +17,7 @@ class DashboardSearcherReducer {
     return _.assign({}, state, { value });
   }
 
-  handleReset(state) {
+  handleSearcherClear(state) {
     return _.assign({}, state, { value: '' });
   }
 }
